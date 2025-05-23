@@ -1,26 +1,65 @@
-@import "tailwindcss";
+
+
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  
+  --font-geist-sans: 'Geist Sans', ui-sans-serif, system-ui;
+  --font-geist-mono: 'Geist Mono', ui-monospace, monospace;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  
+  --color-background: #ffffff;
+  --color-foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-background: #0a0a0a;
+    --color-foreground: #ededed;
   }
 }
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.built-by-badge {
+  position: fixed;
+  left: 1.5rem;   
+  bottom: 1.5rem; 
+  z-index: 50;
 }
+
+@layer base {
+  html {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-geist-sans);
+    line-height: 1.5;
+    scroll-behavior: smooth;
+  }
+
+  code, pre, kbd, samp {
+    font-family: var(--font-geist-mono);
+  }
+}
+html,body{
+  height:100%;
+  margin:0;          
+  overflow:hidden;   
+}
+
+.wallet-adapter-button,
+.wallet-adapter-button:not([disabled]):hover {
+  background: transparent !important;
+  color: #06e6e6 !important;
+  border: 1px solid rgba(6, 230, 230, 0.3) !important;
+  filter: drop-shadow(0 0 4px rgba(6, 230, 230, 0.8));
+  transition: filter 0.3s, color 0.3s, transform 0.3s;
+}
+.wallet-adapter-button:not([disabled]):hover {
+  filter: drop-shadow(0 0 8px rgba(6, 230, 230, 0.9));
+  color: #ffffff !important;
+}
+.wallet-adapter-button:active {
+  transform: scale(0.95);
+}
+.error-message svg {
+      width: 12px; 
+      height: 12px; 
+    }
