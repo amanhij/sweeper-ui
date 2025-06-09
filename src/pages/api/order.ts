@@ -9,10 +9,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
   try {
     const { user, inputMint, outputMint, amount } = req.body
+    if (!amount || isNaN(amount) || amount <= 0) {
+      return res.status(400).json({ error: 'Invalid amount' })
+    }
+    console.log('Sweeping', inputMint, 'amount:', amount);
     const order = await createOrder(user, inputMint, outputMint, amount)
     return res.status(200).json(order)
-  } catch (e: unknown) {
-    const message = e instanceof Error ? e.message : 'An unknown error occurred';
-    return res.status(500).json({ error: message })
+  } catch (err) {
+    console.error('API /api/order error:', err);
+    return res.status(500).json({ error: (err as Error).message || 'Internal error' });
   }
 }
