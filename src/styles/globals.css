@@ -1,6 +1,35 @@
-
-
+@tailwind base;
+@tailwind components;
 @tailwind utilities;
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px; /* width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2); /* dark, slightly transparent track */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #06e6e6; /* cyan thumb */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #05c2c2; /* slightly darker cyan on hover */
+}
+
+/* Apply scrollbar styles to elements that might have them */
+html {
+  scrollbar-width: thin; /* "auto" or "thin" */
+  scrollbar-color: #06e6e6 rgba(0, 0, 0, 0.2); /* thumb color track color */
+}
+
+body {
+  @apply text-white;
+}
 
 :root {
   
