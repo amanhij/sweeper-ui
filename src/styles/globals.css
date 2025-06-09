@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom shadow effects */
+.shadow-glow {
+  box-shadow: 0 0 15px rgba(6, 230, 230, 0.5);
+}
+.shadow-glow-sm {
+  box-shadow: 0 0 8px rgba(6, 230, 230, 0.3);
+}
+
+/* Animation keyframes */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(6, 230, 230, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(6, 230, 230, 0.8); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
 /* Custom scrollbar styles */
 ::-webkit-scrollbar {
   width: 8px; /* width of the scrollbar */
@@ -46,6 +64,64 @@ body {
     --color-background: #0a0a0a;
     --color-foreground: #ededed;
   }
+}
+
+/* Light mode theme variables */
+.light-mode {
+  --color-background: #f5f5f5;
+  --color-foreground: #171717;
+  --card-bg-from: rgba(255, 255, 255, 0.7);
+  --card-bg-to: rgba(255, 255, 255, 0.4);
+  --card-border: rgba(0, 150, 199, 0.3);
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --accent-color: #0096c7;
+}
+
+/* Dark mode theme variables (default) */
+:root {
+  --card-bg-from: rgba(255, 255, 255, 0.15);
+  --card-bg-to: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(6, 230, 230, 0.2);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --accent-color: #06e6e6;
+}
+
+/* Apply theme variables to elements */
+.light-mode .text-white {
+  color: var(--text-primary) !important;
+}
+
+.light-mode .text-cyan-300,
+.light-mode .text-cyan-400 {
+  color: var(--accent-color) !important;
+}
+
+.light-mode .text-neutral-400 {
+  color: var(--text-secondary) !important;
+}
+
+.light-mode .bg-gradient-to-br.from-white\/15.to-white\/5 {
+  background: linear-gradient(to bottom right, var(--card-bg-from), var(--card-bg-to));
+  border-color: var(--card-border);
+}
+
+.light-mode .shadow-glow {
+  box-shadow: 0 0 15px rgba(0, 150, 199, 0.5);
+}
+
+.light-mode .shadow-glow-sm {
+  box-shadow: 0 0 8px rgba(0, 150, 199, 0.3);
+}
+
+.light-mode .animate-pulse-glow {
+  animation: pulse-glow-light 2s infinite;
+}
+
+@keyframes pulse-glow-light {
+  0%, 100% { box-shadow: 0 0 10px rgba(0, 150, 199, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(0, 150, 199, 0.8); }
 }
 .built-by-badge {
   position: fixed;
